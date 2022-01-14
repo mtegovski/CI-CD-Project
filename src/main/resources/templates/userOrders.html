@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User orders</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <h1>User orders</h1>
+    <ul>
+        <li th:each="order : ${orders}">
+            Color: <span th:text="${order.getBalloonColor()}"></span>
+            <br/>
+            Size: <span th:text="${order.getBalloonSize()}"></span>
+            <br/>
+            Ordered by: <span th:text="${order.getUser().getUsername()}"></span>
+            <br/>
+            Date: <span th:text="${#temporals.format(order.getDateCreated(), 'dd-MM-yyyy HH:mm:ss')} != null ?
+            ${#temporals.format(order.getDateCreated(), 'dd-MM-yyyy HH:mm:ss')} : 'No date for this order'"></span>
+        </li>
+    </ul>
+
+  <form th:action="@{/orders}" th:method="GET">
+      <label>Filter orders with: </label>
+      <input type="text" name="filter-order">
+      <input type="submit">
+  </form>
+
+
+    <a href="/balloons">Order again</a>
+</body>
+</html>

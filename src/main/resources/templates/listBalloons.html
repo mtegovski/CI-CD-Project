@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>Balloon Order page - Welcome and choose a Balloon</title>
+</head>
+<body>
+<header>
+    <h1>Welcome to our Balloon Shop App</h1>
+</header>
+<main>
+    <h2>Choose balloon color:</h2>
+    <div th:if="${hasError}" class="error">
+        <div th:text="${error}" class="error"></div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Color</th>
+            <th>
+            </th>
+        </tr>
+            <tr th:each="balloon : ${balloons}">
+                <td>
+                    <form th:action="@{/balloons/selectBalloon}" th:method="POST">
+                        <input th:type='submit' value='Submit'/>
+                <input type="radio" name="color" th:value="${balloon.getName()}" th:text="${balloon.getName()}">
+                        <br/>
+                    </form>
+                </td>
+                <td>
+            <a class="btn btn-secondary" th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}">Edit</a>
+            <form th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}" th:method="DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+                </td>
+        </tr>
+
+    </table>
+<!--    <form th:action="@{/balloons/selectBalloon}" th:method="POST">-->
+<!--        <input th:type='submit' value='Submit'/>-->
+<!--    </form>-->
+    <form th:method="GET" th:action="@{/balloons}">
+        <input type="text" name="balloonType">
+        <br/>
+        <input type="submit" value="Search">
+    </form>
+    <div>
+        <a type="submit" th:href="@{/balloons/add-form}">Add a balloon</a>
+    </div>
+</main>
+</body>
+</html>

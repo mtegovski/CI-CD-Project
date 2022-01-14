@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WP lab - Confirmation Info</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+        table {
+            width:100%;
+        }
+        table, td, th {
+            border: 1px solid black;
+            padding: 3px 2px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<section>
+    <header>
+        <h1>Balloon Order page - Order confirmation </h1>
+    </header>
+    <table>
+        <tr>
+            <th colspan="2">
+                Your Order Status
+            </th>
+        </tr>
+        <tr>
+            <td><b>Client Name </b></td>
+            <td th:text="${clientName}"></td>
+        </tr>
+        <tr>
+            <td><b>Client Address </b></td>
+            <td th:text="${clientAddress}"></td>
+        </tr>
+        <tr>
+            <td><b>Client IP Address</b></td>
+            <td th:text="${ipAddress}"></td>
+        </tr>
+        <tr>
+            <td><b>Client Browser</b></td>
+            <td th:text="${browser}"></td>
+        </tr>
+        <tr>
+            <td><b>Balloon Color </b></td>
+            <td th:text="${balloonColor}"></td>
+        </tr>
+        <tr>
+            <td><b>Balloon Size </b></td>
+            <td th:text="${balloonSize}"></td>
+        </tr>
+    </table>
+    <form th:action="@{/orders/logout}" th:method="POST">
+        <div>
+            <input type="submit" value="Log out">
+        </div>
+    </form>
+
+    <form th:action="@{/orders}" th:method="GET">
+        <div>
+            <input type="submit" value="View all orders">
+        </div>
+    </form>
+
+</section>
+</body>
+</html>
