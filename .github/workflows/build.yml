@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: mtegovski/ci-cd-project:latest
+          tags: mikule/ci-cd-project:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
