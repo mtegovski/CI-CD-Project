@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
-@RequestMapping("/orders")
+@RequestMapping("/orders") //useless controller
 public class OrderController {
 
     private final OrderService orderService;
