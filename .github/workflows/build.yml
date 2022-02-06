@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  lab-wp-jar:
+  lab-wp:
     name: Build and push Docker image to Docker hub
     runs-on: ubuntu-latest
     steps:
