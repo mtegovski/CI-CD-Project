@@ -24,3 +24,4 @@ services: #services we are running
     environment: #enviroment variables needed to access db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=Miha_107
+
