@@ -1,7 +1,7 @@
 package mk.finki.ukim.wp.lab.web.servlet;
 
-import mk.finki.ukim.wp.lab.bootstrap.DataHolder;
 import mk.finki.ukim.wp.lab.model.Order;
+import mk.finki.ukim.wp.lab.service.OrderService;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -17,9 +17,11 @@ import java.time.LocalDateTime;
 public class ConfirmationInfoServlet extends HttpServlet {
 
     private final SpringTemplateEngine springTemplateEngine;
+    private final OrderService orderService;
 
-    public ConfirmationInfoServlet(SpringTemplateEngine springTemplateEngine) {
+    public ConfirmationInfoServlet(SpringTemplateEngine springTemplateEngine, OrderService orderService) {
         this.springTemplateEngine = springTemplateEngine;
+        this.orderService = orderService;
     }
 
     @Override
@@ -46,8 +48,6 @@ public class ConfirmationInfoServlet extends HttpServlet {
         LocalDateTime orderDate = LocalDateTime.parse(req.getParameter("orderDate"));
         req.getSession().setAttribute("orderDate",orderDate);
         Order order = new Order(balloonColor,balloonSize);
-        DataHolder.orders.add(order);
-        req.getSession().setAttribute("orders",DataHolder.orders);
         resp.sendRedirect("/orders");
     }
 }

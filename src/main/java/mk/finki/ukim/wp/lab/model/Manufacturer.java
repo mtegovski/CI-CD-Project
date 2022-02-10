@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Random;
 
 @Data
 @Entity
@@ -26,5 +27,12 @@ public class Manufacturer {
     }
 
     public Manufacturer() {
+    }
+
+    public Manufacturer(Long id,String name, String country, String address) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+        this.address = address;
     }
 }

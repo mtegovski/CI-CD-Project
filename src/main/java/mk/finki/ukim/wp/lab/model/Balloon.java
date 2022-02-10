@@ -25,6 +25,13 @@ public class Balloon {
         this.manufacturer = manufacturer;
     }
 
+    public Balloon(Long id, String name, String description,Manufacturer manufacturer) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.manufacturer = manufacturer;
+    }
+
     public Balloon() {
     }
 
