@@ -44,3 +44,6 @@ jobs:
         with:
           push: true
           tags: mikule/ci-cd-project:latest
+          context: ./
+          file: ./Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
